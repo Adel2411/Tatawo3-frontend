@@ -1,8 +1,6 @@
 "use client";
 
-import FeatureCard from "@/components/FeatureCard";
 import { Button } from "@/components/ui/button";
-import { features } from "@/constants";
 import { deleteToken } from "@/features/auth/api";
 import { showPromiseToast } from "@/lib/toastHandler";
 import { LogOut } from "lucide-react";
@@ -26,59 +24,28 @@ export default function ProtectedPage() {
     );
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <div className="flex justify-center pt-20 max-w-(--breakpoint-lg)">
-      <div>
-        <div className="text-center">
-          <LetterPullUp words="next-platter Protected Route" />
-          <BlurIn
-            text="
-            You've successfully accessed a secure route. Start building your
-            protected features here.
+    <div className="min-h-screen flex flex-col justify-center items-center pt-20 text-center">
+      <LetterPullUp words="DCF Volonteer Protected Page" />
+      <BlurIn
+        text="
+          A volunteer management platform for the DCF hackathon. Streamlines 
+          coordination, scheduling, and communication for event organizers and 
+          participants throughout the hackathon experience.
+          You are now in a protected area that requires authentication.
 "
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button variant="destructive" onClick={handleLogOut}>
-              Logout
-              <LogOut className="h-3 w-3" />
-            </Button>
-          </motion.div>
-        </div>
-        <motion.div
-          className="px-4 py-32 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {features.map((feature) => (
-            <motion.div key={feature.id} variants={itemVariants}>
-              <FeatureCard feature={feature} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Button variant="destructive" onClick={handleLogOut}>
+          Logout
+          <LogOut className="h-3 w-3" />
+        </Button>
+      </motion.div>
     </div>
   );
 }

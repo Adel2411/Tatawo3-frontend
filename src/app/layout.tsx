@@ -50,8 +50,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <QueryProvider>
-            <div className="relative min-h-screen flex justify-center">
-              <main>
+            <div>
+              <main className="relative">
                 {children}
                 <Toaster position="bottom-right" />
               </main>
@@ -59,7 +59,6 @@ export default function RootLayout({
                 <ThemeToggle />
               </div>
             </div>
-            <Footer />
           </QueryProvider>
         </ThemeProvider>
       </body>
