@@ -3,9 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Footer } from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import NavBar from "@/components/NavBar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -13,26 +12,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "next-platter",
+  title: "DCF Volonteer App",
   description:
-    "Production-ready Next.js 15 template with React 19, modular architecture, authentication flows, and enterprise features.",
-  keywords: [
-    "Next.js 15",
-    "React 19",
-    "TypeScript",
-    "Modular Architecture",
-    "Authentication",
-    "Shadcn/ui",
-    "Zustand",
-    "React Query",
-    "Framer Motion",
-    "Cypress",
-    "Docker",
-    "Tailwind CSS",
-  ],
-  creator: "Adel2411",
-  category: "Web Development",
-  applicationName: "next-platter",
+    "A simple app to help you find the best volunteer opportunities in your area. and help you to connect with the right people.",
 };
 
 export default function RootLayout({
@@ -51,13 +33,15 @@ export default function RootLayout({
         >
           <QueryProvider>
             <div>
+              <NavBar />
               <main className="relative">
                 {children}
                 <Toaster position="bottom-right" />
               </main>
-              <div className="absolute right-4 top-4">
+              {/* Remove this since ThemeToggle is now in the NavBar */}
+              {/* <div className="absolute right-4 top-4">
                 <ThemeToggle />
-              </div>
+              </div> */}
             </div>
           </QueryProvider>
         </ThemeProvider>
