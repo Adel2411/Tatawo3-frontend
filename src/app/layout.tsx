@@ -4,7 +4,7 @@ import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Toaster } from "react-hot-toast";
-import NavBar from "@/components/NavBar";
+import { Navbar } from "@/components/NavBar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -32,16 +32,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <QueryProvider>
-            <div>
-              <NavBar />
-              <main className="relative">
+            <div className="relative flex flex-col items-center">
+              <Navbar />
+              <main className="mt-20">
                 {children}
                 <Toaster position="bottom-right" />
               </main>
-              {/* Remove this since ThemeToggle is now in the NavBar */}
-              {/* <div className="absolute right-4 top-4">
-                <ThemeToggle />
-              </div> */}
             </div>
           </QueryProvider>
         </ThemeProvider>

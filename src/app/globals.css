@@ -94,7 +94,7 @@
   --chart-3: hsl(0, 0%, 85%);
   --chart-4: hsl(204, 30%, 78%);
   --chart-5: hsl(204, 103%, 40%);
-  --radius: 0.5rem;
+  --radius: 0.3rem;
 }
 .dark {
   --background: hsl(225, 36%, 11%);
