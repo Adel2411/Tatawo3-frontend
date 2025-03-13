@@ -16,8 +16,17 @@ const usernameRegex = /^[A-Za-z][A-Za-z0-9]*$/;
 const usernameErrorMessage =
   "Username must start with a letter and contain no spaces.";
 
-// Register form schema
-const registerSchema = z
+// Restaurant name validation
+const restaurantNameRegex = /^[A-Za-z0-9\s'-]+$/;
+const restaurantNameErrorMessage =
+  "Restaurant name contains invalid characters.";
+
+// Contact number validation
+const phoneRegex = /^\+?[0-9]{10,15}$/;
+const phoneErrorMessage = "Please enter a valid phone number";
+
+// Register user schema
+const registerUserSchema = z
   .object({
     fullName: z
       .string()
@@ -41,6 +50,47 @@ const registerSchema = z
     message: "Passwords don't match",
     path: ["confirmPassword"],
   });
+
+// Register restaurant schema
+const registerOrgSchema = z
+  .object({
+    restaurantName: z
+      .string()
+      .min(2, "Restaurant name is required")
+      .regex(restaurantNameRegex, restaurantNameErrorMessage),
+    businessEmail: z
+      .string()
+      .min(1, "Business email is required")
+      .email("Invalid email"),
+    address: z.string().min(5, "Address is required"),
+    contactNumber: z
+      .string()
+      .min(1, "Contact number is required")
+      .regex(phoneRegex, phoneErrorMessage),
+    ownerName: z
+      .string()
+      .min(1, "Owner name is required")
+      .regex(fullNameRegex, fullNameErrorMessage),
+    username: z
+      .string()
+      .min(1, "Username is required")
+      .regex(usernameRegex, usernameErrorMessage),
+    password: z
+      .string()
+      .min(8, "Password must be at least 8 chars long")
+      .regex(passwordRegex, passwordErrorMessage),
+    confirmPassword: z
+      .string()
+      .min(8, "Password must be at least 8 chars long")
+      .regex(passwordRegex, passwordErrorMessage),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
+
+// For backward compatibility
+const registerSchema = registerUserSchema;
 
 // Login form schema
 const loginSchema = z
@@ -103,6 +153,8 @@ const verifyEmailSchema = z.object({
 
 export {
   registerSchema,
+  registerUserSchema,
+  registerOrgSchema,
   loginSchema,
   forgotPasswordSchema,
   resetPasswordSchema,

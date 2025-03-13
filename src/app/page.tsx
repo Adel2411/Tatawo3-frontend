@@ -23,7 +23,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Link href="/register">
+                <Link href="/register-user">
                   <Button size="lg" className="bg-primary">
                     Join Now
                   </Button>
@@ -187,7 +187,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Link href="/register">
+              <Link href="/register-user">
                 <Button size="lg" className="bg-primary ">
                   Create Account
                 </Button>

@@ -101,11 +101,17 @@ function LoginForm() {
           Login
         </Button>
         <OAuthButtons />
-        <FormDescription>
-          Don't have an account?
-          <Button variant="link" asChild>
-            <Link href={"/register"}>register</Link>
-          </Button>
+        <FormDescription className="flex flex-col">
+          Don't have an account? You can register as :
+          <span>
+            <Button variant="link" className="px-2" asChild>
+              <Link href={"/register-user"}>user</Link>
+            </Button>
+            or
+            <Button variant="link" className="px-2" asChild>
+              <Link href={"/register-org"}>organization</Link>
+            </Button>
+          </span>
         </FormDescription>
       </form>
     </Form>

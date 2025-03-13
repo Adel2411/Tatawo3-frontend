@@ -3,7 +3,7 @@ describe("Authentication Routes", () => {
 
   context("Loading Pages", () => {
     const pages = [
-      { path: "/register", heading: "Register" },
+      { path: "/register-user", heading: "User Register" },
       { path: "/login", heading: "Login" },
       { path: "/verify-email", heading: "Verify Email" },
       { path: "/forgot-password", heading: "Forgot Password" },
@@ -21,7 +21,7 @@ describe("Authentication Routes", () => {
   context("Form Submissions", () => {
     const forms = [
       {
-        path: "/register",
+        path: "/register-user",
         fields: [
           { name: "fullName", value: "Test User" },
           { name: "username", value: "testuser" },
@@ -115,17 +115,17 @@ describe("Authentication Routes", () => {
   context("Navigation", () => {
     const navigationTests = [
       {
-        from: "/register",
+        from: "/register-user",
         to: "/login",
         linkText: "login",
       },
       {
         from: "/login",
-        to: "/register",
-        linkText: "register",
+        to: "/register-user",
+        linkText: "register-user",
       },
       {
-        from: "/register",
+        from: "/register-user",
         to: "/verify-email",
         formFields: [
           { name: "fullName", value: "Test User" },

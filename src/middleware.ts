@@ -9,7 +9,8 @@ export function middleware(req: NextRequest) {
   const publicRoutes = [
     "/",
     "/login",
-    "/register",
+    "/register-user",
+    "/register-org",
     "/verify-email",
     "/forgot-password",
     "/reset-password",

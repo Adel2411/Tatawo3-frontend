@@ -2,16 +2,25 @@ import z from "zod";
 import {
   forgotPasswordSchema,
   loginSchema,
+  registerOrgSchema,
   registerSchema,
+  registerUserSchema,
   resetPasswordBodySchema,
   resetPasswordInputsSchema,
   resetPasswordSchema,
   verifyEmailSchema,
 } from "../schema";
 
-// Register types
-export type RegisterInputs = z.infer<typeof registerSchema>;
+// Register user types
+export type RegisterUserInputs = z.infer<typeof registerUserSchema>;
+export type RegisterUserBody = Omit<RegisterUserInputs, "confirmPassword">;
 
+// Register org types
+export type RegisterOrgInputs = z.infer<typeof registerOrgSchema>;
+export type RegisterOrgBody = Omit<RegisterOrgInputs, "confirmPassword">;
+
+// For backward compatibility
+export type RegisterInputs = z.infer<typeof registerSchema>;
 export type RegisterBody = Omit<RegisterInputs, "confirmPassword">;
 
 export interface RegisterResponse {
@@ -25,7 +34,6 @@ export interface RegisterResponse {
 
 // Login types
 export type LoginInputs = z.infer<typeof loginSchema>;
-
 export type LoginBody = LoginInputs;
 
 export interface LoginResponse {
@@ -39,7 +47,6 @@ export interface LoginResponse {
 
 // Verify email types
 export type VerifyEmailInputs = z.infer<typeof verifyEmailSchema>;
-
 export type VerifyEmailBody = VerifyEmailInputs;
 
 export interface VerifyEmailResponse {
@@ -48,7 +55,6 @@ export interface VerifyEmailResponse {
 
 // Forgot password types
 export type ForgotPasswordInputs = z.infer<typeof forgotPasswordSchema>;
-
 export type ForgotPasswordBody = ForgotPasswordInputs;
 
 export type ForgotPasswordResponse = {
@@ -57,9 +63,7 @@ export type ForgotPasswordResponse = {
 
 // Reset password types
 export type BaseResetPassword = z.infer<typeof resetPasswordSchema>;
-
 export type ResetPasswordInputs = z.infer<typeof resetPasswordInputsSchema>;
-
 export type ResetPasswordBody = z.infer<typeof resetPasswordBodySchema>;
 
 export type ResetPasswordResponse = {
