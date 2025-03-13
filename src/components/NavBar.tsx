@@ -22,7 +22,7 @@ export function Navbar() {
   const isLoggedIn = pathname.includes("/dashboard");
 
   return (
-    <header className="px-4 md:px-12 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="px-4 md:px-12 fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="h-16 flex items-center justify-between w-full">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center space-x-2">

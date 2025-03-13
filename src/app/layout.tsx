@@ -34,7 +34,7 @@ export default function RootLayout({
           <QueryProvider>
             <div className="relative flex flex-col items-center">
               <Navbar />
-              <main className="mt-20">
+              <main>
                 {children}
                 <Toaster position="bottom-right" />
               </main>

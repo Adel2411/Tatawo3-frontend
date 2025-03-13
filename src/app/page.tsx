@@ -7,7 +7,7 @@ import { TestimonialCard } from "@/features/landing-page/TestimonialCard";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen mt-10">
       {/* Hero Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-primary-50 to-white dark:from-primary-950 dark:to-background">
         <div className="container px-4 md:px-6">
