@@ -18,7 +18,7 @@ export default function ProtectedPage() {
         await deleteToken();
 
         // On success
-        router.push("/");
+        router.push("/home");
       })(),
       "Logging out",
     );

@@ -3,12 +3,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import React from "react";
 import { HeroImage } from "./HeroImage";
+import { Spotlight } from "@/components/ui/spotlight-new";
 
 function Hero() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-primary-50 to-white dark:from-primary-950 dark:to-background">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+          <Spotlight />
           <Card className="border-none bg-transparent shadow-none animate-slide-up">
             <CardContent className="p-0 space-y-4">
               <div className="space-y-2">

@@ -15,7 +15,7 @@ function Features() {
       <div className="container px-4 md:px-6">
         <Card className="border-none bg-transparent shadow-none">
           <CardHeader className="space-y-4 text-center">
-            <div className="inline-block rounded-lg bg-primary-100 dark:bg-primary-800/30 px-3 py-1 text-sm">
+            <div className="bg-primary-100 dark:bg-primary-800/30 px-3 py-1 text-sm">
               One Platform, Multiple Roles
             </div>
             <CardTitle className="text-3xl font-bold tracking-tighter md:text-4xl/tight">

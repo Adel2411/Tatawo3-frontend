@@ -5,9 +5,17 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get("token"); // Retrieve the JWT from cookies
   const { pathname } = req.nextUrl;
 
+  // If the route is the root path
+  if (pathname === "/") {
+    // Redirect to dashboard if authenticated, otherwise to home
+    return token
+      ? NextResponse.redirect(new URL("/dashboard", req.url))
+      : NextResponse.redirect(new URL("/home", req.url));
+  }
+
   // Define public and protected routes
   const publicRoutes = [
-    "/",
+    "/home",
     "/login",
     "/register-user",
     "/register-org",
@@ -24,7 +32,7 @@ export function middleware(req: NextRequest) {
 
   // If the user is not authenticated and visits protected routes, redirect to login
   if (!token && protectedRoutes.includes(pathname)) {
-    return NextResponse.redirect(new URL("/", req.url));
+    return NextResponse.redirect(new URL("/home", req.url));
   }
 
   return NextResponse.next();

@@ -183,7 +183,7 @@ describe("Authentication Routes", () => {
     it("should redirect to the home page when visiting the protected route without token in the cookies", () => {
       cy.clearCookie("token");
       cy.visit(`${baseUrl}/dashboard`);
-      cy.url().should("include", "/");
+      cy.url().should("include", "/home");
     });
   });
 });

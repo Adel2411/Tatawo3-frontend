@@ -12,12 +12,26 @@ import {
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
-import { UserModeToggle } from "./UserModeToggle";
 import Image from "next/image";
+
+// Define the navigation item type
+type NavItem = {
+  href: string;
+  label: string;
+};
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
+  // Navigation items array
+  const navItems: NavItem[] = [
+    { href: "/home", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/how-it-works", label: "How It Works" },
+    { href: "/contact", label: "Contact" },
+    { href: "/iftar", label: "Iftar" },
+  ];
 
   // Check if user is on dashboard pages to show mode toggle
   const isLoggedIn = pathname.includes("/dashboard");
@@ -26,7 +40,7 @@ export function Navbar() {
     <header className="px-4 md:px-12 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="h-16 flex items-center justify-between w-full">
         <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center p-2">
+          <Link href="/home" className="flex items-center p-2">
             <Image
               src="/Logo.svg"
               alt="People sharing iftar meal"
@@ -36,43 +50,30 @@ export function Navbar() {
             />
           </Link>
           <nav className="hidden md:flex gap-8 ml-6">
-            <Link
-              href="/"
-              className={`text-sm font-medium ${pathname === "/" ? "text-foreground" : "text-muted-foreground"} transition-colors hover:text-foreground`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className={`text-sm font-medium ${pathname === "/about" ? "text-foreground" : "text-muted-foreground"} transition-colors hover:text-foreground`}
-            >
-              About
-            </Link>
-            <Link
-              href="/how-it-works"
-              className={`text-sm font-medium ${pathname === "/how-it-works" ? "text-foreground" : "text-muted-foreground"} transition-colors hover:text-foreground`}
-            >
-              How It Works
-            </Link>
-            <Link
-              href="/contact"
-              className={`text-sm font-medium ${pathname === "/contact" ? "text-foreground" : "text-muted-foreground"} transition-colors hover:text-foreground`}
-            >
-              Contact
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-sm font-medium ${
+                  pathname === item.href
+                    ? "text-foreground"
+                    : "text-muted-foreground"
+                } transition-colors hover:text-foreground`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          {isLoggedIn ? (
-            <UserModeToggle />
-          ) : (
+          {!isLoggedIn && (
             <div className="hidden md:flex items-center gap-2">
               <Link href="/login">
                 <Button variant="ghost" size="sm">
                   Sign In
                 </Button>
               </Link>
-              <Link href="/register">
+              <Link href="/register-user">
                 <Button size="sm" className="bg-primary hover:bg-primary/90">
                   Join Now
                 </Button>
@@ -94,52 +95,21 @@ export function Navbar() {
                 Nav Menu
               </SheetTitle>
               <nav className="flex flex-col gap-4 mt-2 flex-1">
-                <Link
-                  href="/"
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-2 rounded-md transition-colors hover:bg-accent ${
-                    pathname === "/"
-                      ? "bg-accent text-foreground font-medium"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/about"
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-2 rounded-md transition-colors hover:bg-accent ${
-                    pathname === "/about"
-                      ? "bg-accent text-foreground font-medium"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  About
-                </Link>
-                <Link
-                  href="/how-it-works"
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-2 rounded-md transition-colors hover:bg-accent ${
-                    pathname === "/how-it-works"
-                      ? "bg-accent text-foreground font-medium"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  How It Works
-                </Link>
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-2 rounded-md transition-colors hover:bg-accent ${
-                    pathname === "/contact"
-                      ? "bg-accent text-foreground font-medium"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  Contact
-                </Link>
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`px-4 py-2 rounded-md transition-colors hover:bg-accent ${
+                      pathname === item.href
+                        ? "bg-accent text-foreground font-medium"
+                        : "text-muted-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </nav>
-
               <div className="mt-auto pt-4 border-t p-4">
                 {!isLoggedIn && (
                   <div className="flex flex-col gap-4">
@@ -148,7 +118,10 @@ export function Navbar() {
                         Sign In
                       </Button>
                     </Link>
-                    <Link href="/register" onClick={() => setIsOpen(false)}>
+                    <Link
+                      href="/register-user"
+                      onClick={() => setIsOpen(false)}
+                    >
                       <Button className="w-full bg-primary hover:bg-primary/90">
                         Join Now
                       </Button>

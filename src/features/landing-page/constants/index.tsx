@@ -1,5 +1,5 @@
 import { Calendar, Users, Utensils } from "lucide-react";
-import { Step, Testimonial } from "../types";
+import { FeatureItem, Step, Testimonial } from "../types";
 
 export const featureItems: FeatureItem[] = [
   {

@@ -49,12 +49,12 @@ function HowItWorks() {
                 </CardContent>
               </div>
 
-              <div className="rounded-lg border bg-background p-2 shadow-medium">
+              <div className="rounded-lg border bg-background p-2 shadow-medium aspect-video flex items-center justify-center">
                 <Image
-                  src="/iftar.jpg"
+                  src="/Logo.svg"
                   alt="App interface showing mode toggle"
-                  width={700}
-                  height={700}
+                  width={300}
+                  height={300}
                   className="object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
