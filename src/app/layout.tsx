@@ -4,7 +4,6 @@ import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Toaster } from "react-hot-toast";
-import { Navbar } from "@/components/NavBar";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -33,11 +32,8 @@ export default function RootLayout({
         >
           <QueryProvider>
             <div className="relative flex flex-col items-center">
-              <Navbar />
-              <main>
-                {children}
-                <Toaster position="bottom-right" />
-              </main>
+              {children}
+              <Toaster position="bottom-right" />
             </div>
           </QueryProvider>
         </ThemeProvider>
