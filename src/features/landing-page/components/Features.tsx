@@ -7,36 +7,9 @@ import {
 } from "@/components/ui/card";
 import React from "react";
 import { FeatureCard } from "./FeatureCard";
-import { Calendar, Users, Utensils } from "lucide-react";
-
-type FeatureItem = {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-};
+import { featureItems } from "../constants";
 
 function Features() {
-  const featureItems: FeatureItem[] = [
-    {
-      icon: <Users className="h-10 w-10 text-primary" />,
-      title: "Volunteer",
-      description:
-        "Sign up for tasks, help at local restaurants, and earn rewards for your contributions.",
-    },
-    {
-      icon: <Utensils className="h-10 w-10 text-primary" />,
-      title: "Find Iftar",
-      description:
-        "Discover nearby free Iftar meals with real-time updates on availability and menu options.",
-    },
-    {
-      icon: <Calendar className="h-10 w-10 text-primary" />,
-      title: "Host Events",
-      description:
-        "Restaurant owners can post events, manage volunteers, and track attendance.",
-    },
-  ];
-
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import React from "react";
 import { TestimonialCard } from "./TestimonialCard";
+import { testimonials } from "../constants";
 
 function Testimonials() {
   return (
@@ -23,21 +24,14 @@ function Testimonials() {
           </CardHeader>
           <CardContent>
             <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-3">
-              <TestimonialCard
-                quote="As a volunteer, I've been able to give back to my community during Ramadan while making new friends."
-                author="Ahmed K."
-                role="Volunteer"
-              />
-              <TestimonialCard
-                quote="Finding Iftar meals has never been easier. The real-time updates save me so much time."
-                author="Fatima S."
-                role="Guest"
-              />
-              <TestimonialCard
-                quote="Our restaurant has been able to reach more people and coordinate volunteers efficiently."
-                author="Mohammed R."
-                role="Restaurant Owner"
-              />
+              {testimonials.map((testimonial, index) => (
+                <TestimonialCard
+                  key={index}
+                  quote={testimonial.quote}
+                  author={testimonial.author}
+                  role={testimonial.role}
+                />
+              ))}
             </div>
           </CardContent>
         </Card>

@@ -7,34 +7,9 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import React from "react";
-
-type Step = {
-  number: number;
-  title: string;
-  description: string;
-};
+import { steps } from "../constants";
 
 function HowItWorks() {
-  const steps: Step[] = [
-    {
-      number: 1,
-      title: "Create a single account",
-      description: "Register once to access all features of the platform.",
-    },
-    {
-      number: 2,
-      title: "Toggle between modes",
-      description:
-        "Switch between volunteer and guest modes with a single click.",
-    },
-    {
-      number: 3,
-      title: "Enjoy personalized features",
-      description:
-        "Access dedicated dashboards for each mode with relevant information.",
-    },
-  ];
-
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary dark:bg-secondary-foreground">
       <div className="container px-4 md:px-6">
@@ -74,19 +49,15 @@ function HowItWorks() {
                 </CardContent>
               </div>
 
-              <Card className="bg-gradient-to-br from-primary/30 to-primary/20 rounded-lg border bg-background p-2 shadow-medium">
-                <CardContent className="p-0">
-                  <div className="flex items-center justify-center overflow-hidden rounded-md bg-primary-50 dark:bg-primary-950/50 aspect-video">
-                    <Image
-                      src="/Logo.svg"
-                      alt="App interface showing mode toggle"
-                      width={300}
-                      height={300}
-                      className="object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="rounded-lg border bg-background p-2 shadow-medium">
+                <Image
+                  src="/iftar.jpg"
+                  alt="App interface showing mode toggle"
+                  width={700}
+                  height={700}
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
             </div>
           </CardContent>
         </Card>
