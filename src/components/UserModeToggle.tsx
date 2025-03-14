@@ -11,7 +11,7 @@ export function UserModeToggle() {
   const isRestaurantMode = pathname.includes("/dashboard/restaurant");
 
   return (
-    <div className="flex items-center gap-2 border rounded-full p-1">
+    <div className="flex items-center border rounded-md">
       <Link href="/dashboard/volunteer">
         <Button
           variant={isVolunteerMode ? "default" : "ghost"}

@@ -15,11 +15,11 @@ export function middleware(req: NextRequest) {
     "/forgot-password",
     "/reset-password",
   ];
-  const protectedRoutes = ["/protected"];
+  const protectedRoutes = ["/onboarding", "/dashboard"];
 
   // If the user is authenticated and visits public routes, redirect to dashboard
   if (token && publicRoutes.includes(pathname)) {
-    return NextResponse.redirect(new URL("/protected", req.url));
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   // If the user is not authenticated and visits protected routes, redirect to login

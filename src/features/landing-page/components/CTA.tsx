@@ -18,7 +18,7 @@ function CTA() {
             <CardTitle className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
               Join Our Community Today
             </CardTitle>
-            <CardDescription className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
+            <CardDescription className="text-muted-foreground md:text-xl/relaxed">
               Be part of something meaningful this Ramadan.
             </CardDescription>
           </CardHeader>

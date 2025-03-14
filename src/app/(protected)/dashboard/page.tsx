@@ -26,7 +26,7 @@ export default function ProtectedPage() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center pt-20 text-center">
-      <LetterPullUp words="DCF Volonteer Protected Page" />
+      <LetterPullUp words="DCF Volonteer Dashboard Page" />
       <BlurIn
         text="
           A volunteer management platform for the DCF hackathon. Streamlines 

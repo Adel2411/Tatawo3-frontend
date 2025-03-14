@@ -44,7 +44,7 @@ function LoginForm() {
 
         // On success
         form.reset();
-        router.push("/protected");
+        router.push("/dashboard");
 
         setLoading(false);
       })(),

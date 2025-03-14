@@ -5,6 +5,7 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 import React from "react";
 
 type Step = {
@@ -42,7 +43,7 @@ function HowItWorks() {
             <CardTitle className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
               Simple & Seamless Experience
             </CardTitle>
-            <CardDescription className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <CardDescription className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Switch between volunteer and guest modes with a single account.
             </CardDescription>
           </CardHeader>
@@ -73,13 +74,15 @@ function HowItWorks() {
                 </CardContent>
               </div>
 
-              <Card className="bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg border bg-background p-2 shadow-medium">
+              <Card className="bg-gradient-to-br from-primary/30 to-primary/20 rounded-lg border bg-background p-2 shadow-medium">
                 <CardContent className="p-0">
                   <div className="flex items-center justify-center overflow-hidden rounded-md bg-primary-50 dark:bg-primary-950/50 aspect-video">
-                    <img
+                    <Image
                       src="/Logo.svg"
                       alt="App interface showing mode toggle"
-                      className="w-96 h-28 object-cover transition-transform duration-500 hover:scale-105"
+                      width={300}
+                      height={300}
+                      className="object-cover transition-transform duration-500 hover:scale-105"
                     />
                   </div>
                 </CardContent>
