@@ -47,7 +47,7 @@ function VerifyEmailForm() {
 
         // On success
         form.reset();
-        router.push("/protected");
+        router.push("/onboarding");
 
         setLoading(false);
       })(),

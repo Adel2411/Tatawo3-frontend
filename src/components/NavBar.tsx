@@ -1,127 +1,138 @@
 "use client";
 
 import Link from "next/link";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { motion, useScroll, useTransform } from "motion/react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./ThemeToggle";
+import Image from "next/image";
 
-const NavBar = () => {
-  const { scrollYProgress } = useScroll();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
-  const borderOpacity = useTransform(scrollYProgress, [0, 0.6], [0, 0.1]);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4">
-      <motion.div
-        className="absolute inset-0 z-[-1]"
-        style={{
-          opacity: bgOpacity,
-          backdropFilter: useTransform(
-            scrollYProgress,
-            [0, 0.3],
-            ["blur(0px)", "blur(10px)"],
-          ),
-          boxShadow: useTransform(
-            scrollYProgress,
-            [0, 0.1],
-            ["none", "0 1px 3px rgba(0,0,0,0.1)"],
-          ),
-          borderBottom: useTransform(
-            borderOpacity,
-            (opacity) => `1px solid rgba(var(--primary-color-rgb), ${opacity})`,
-          ),
-        }}
-      />
-
-      <Link href="/" className="font-semibold text-xl">
-        DCF Volunteer
-      </Link>
-
-      {/* Mobile menu button */}
-      <button
-        className="md:hidden flex items-center"
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          {isMenuOpen ? (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          ) : (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          )}
-        </svg>
-      </button>
-
-      {/* Desktop navigation */}
-      <div className="hidden md:flex items-center space-x-8">
-        <Link
-          href="/opportunities"
-          className="hover:text-primary transition-colors"
-        >
-          Opportunities
-        </Link>
-        <Link href="/about" className="hover:text-primary transition-colors">
-          About
-        </Link>
-        <Link href="/contact" className="hover:text-primary transition-colors">
-          Contact
-        </Link>
-        <ThemeToggle />
-      </div>
-
-      {/* Mobile navigation */}
-      {isMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background border-b border-border p-4 flex flex-col space-y-4 md:hidden">
-          <Link
-            href="/opportunities"
-            className="hover:text-primary transition-colors"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Opportunities
-          </Link>
-          <Link
-            href="/about"
-            className="hover:text-primary transition-colors"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className="hover:text-primary transition-colors"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Contact
-          </Link>
-          <div className="pt-2">
-            <ThemeToggle />
-          </div>
-        </div>
-      )}
-    </nav>
-  );
+// Define the navigation item type
+type NavItem = {
+  href: string;
+  label: string;
 };
 
-export default NavBar;
+export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Navigation items array
+  const navItems: NavItem[] = [
+    { href: "/home", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/how-it-works", label: "How It Works" },
+    { href: "/contact", label: "Contact" },
+    { href: "/iftar", label: "Iftar" },
+  ];
+
+  // Check if user is on dashboard pages to show mode toggle
+  const isLoggedIn = pathname.includes("/dashboard");
+
+  return (
+    <header className="px-4 md:px-12 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="h-16 flex items-center justify-between w-full">
+        <div className="flex items-center gap-8">
+          <Link href="/home" className="flex items-center p-2">
+            <Image
+              src="/Logo.svg"
+              alt="People sharing iftar meal"
+              width={60}
+              height={40}
+              className="object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </Link>
+          <nav className="hidden md:flex gap-8 ml-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-sm font-medium ${
+                  pathname === item.href
+                    ? "text-foreground"
+                    : "text-muted-foreground"
+                } transition-colors hover:text-foreground`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <div className="flex items-center gap-4">
+          {!isLoggedIn && (
+            <div className="hidden md:flex items-center gap-2">
+              <Link href="/login">
+                <Button variant="ghost" size="sm">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/register-user">
+                <Button size="sm" className="bg-primary hover:bg-primary/90">
+                  Join Now
+                </Button>
+              </Link>
+            </div>
+          )}
+          <ThemeToggle />
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="w-[300px] sm:w-[400px] flex flex-col"
+            >
+              <SheetTitle className="border-b py-4 my-8 font-bold text-center text-2xl">
+                Nav Menu
+              </SheetTitle>
+              <nav className="flex flex-col gap-4 mt-2 flex-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`px-4 py-2 rounded-md transition-colors hover:bg-accent ${
+                      pathname === item.href
+                        ? "bg-accent text-foreground font-medium"
+                        : "text-muted-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+              <div className="mt-auto pt-4 border-t p-4">
+                {!isLoggedIn && (
+                  <div className="flex flex-col gap-4">
+                    <Link href="/login" onClick={() => setIsOpen(false)}>
+                      <Button variant="outline" className="w-full">
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link
+                      href="/register-user"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Button className="w-full bg-primary hover:bg-primary/90">
+                        Join Now
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </header>
+  );
+}

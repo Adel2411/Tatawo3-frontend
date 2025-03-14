@@ -1,7 +1,7 @@
 "use client";
 
 import { RegisterInputs } from "../types";
-import { registerSchema } from "../schema";
+import { registerUserSchema } from "../schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -21,13 +21,12 @@ import OAuthButtons from "./OAuthButtons";
 import { useLoadingStore } from "@/stores/loading";
 import { showPromiseToast } from "@/lib/toastHandler";
 
-function RegisterForm() {
+function RegisterUserForm() {
   const { isLoading, setLoading } = useLoadingStore();
-
   const router = useRouter();
 
   const form = useForm<RegisterInputs>({
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(registerUserSchema),
     defaultValues: {
       fullName: "",
       username: "",
@@ -153,18 +152,24 @@ function RegisterForm() {
           />
         </div>
         <Button type="submit" className="w-full" disabled={isLoading}>
-          Register
+          Register User Account
         </Button>
         <OAuthButtons />
-        <FormDescription>
+        <FormDescription className="flex flex-col">
           Already have an account?
-          <Button variant="link" asChild>
-            <Link href={"/login"}>login</Link>
-          </Button>
+          <span>
+            <Button variant="link" className="px-2" asChild>
+              <Link href={"/login"}>login</Link>
+            </Button>
+            or
+            <Button variant="link" className="px-2" asChild>
+              <Link href={"/register-org"}>register as organization</Link>
+            </Button>
+          </span>
         </FormDescription>
       </form>
     </Form>
   );
 }
 
-export default RegisterForm;
+export default RegisterUserForm;
