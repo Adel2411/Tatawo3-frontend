@@ -12,8 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LineChart, BarChart, PieChart } from "lucide-react";
 import {
-  Area,
-  AreaChart,
   Bar,
   BarChart as RechartsBarChart,
   Cell,
@@ -100,11 +98,7 @@ export function AIInsightsCard({ title, description }: AIInsightsCardProps) {
                 dietary preferences based on historical data and current trends.
               </p>
             </div>
-            <Button
-              onClick={handleGenerateInsights}
-              className="bg-emerald-600 hover:bg-emerald-700"
-              disabled={isGenerating}
-            >
+            <Button onClick={handleGenerateInsights} disabled={isGenerating}>
               {isGenerating ? "Generating Insights..." : "Generate Insights"}
             </Button>
           </div>
@@ -150,14 +144,14 @@ export function AIInsightsCard({ title, description }: AIInsightsCardProps) {
                         type="monotone"
                         dataKey="predicted"
                         name="Predicted Attendance"
-                        stroke="rgb(16, 185, 129)"
+                        stroke="#347BF6"
                         activeDot={{ r: 8 }}
                       />
                       <Line
                         type="monotone"
                         dataKey="previous"
                         name="Previous Week"
-                        stroke="rgb(148, 163, 184)"
+                        stroke="#121A2B"
                         strokeDasharray="5 5"
                       />
                     </RechartsLineChart>
@@ -168,7 +162,7 @@ export function AIInsightsCard({ title, description }: AIInsightsCardProps) {
                   compared to last week.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 bg-emerald-50 dark:bg-emerald-900/20">
+              <div className="rounded-lg border p-4 bg-primary/20">
                 <h3 className="text-sm font-medium mb-1">AI Recommendation</h3>
                 <p className="text-sm">
                   Based on the predicted attendance spike on Friday, consider
@@ -208,7 +202,7 @@ export function AIInsightsCard({ title, description }: AIInsightsCardProps) {
                   food preparation.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 bg-emerald-50 dark:bg-emerald-900/20">
+              <div className="rounded-lg border p-4 bg-primary/20">
                 <h3 className="text-sm font-medium mb-1">AI Recommendation</h3>
                 <p className="text-sm">
                   Prioritize recruiting volunteers for serving positions.
@@ -253,7 +247,7 @@ export function AIInsightsCard({ title, description }: AIInsightsCardProps) {
                   the community average of 18%.
                 </p>
               </div>
-              <div className="rounded-lg border p-4 bg-emerald-50 dark:bg-emerald-900/20">
+              <div className="rounded-lg border p-4 bg-primary/20">
                 <h3 className="text-sm font-medium mb-1">AI Recommendation</h3>
                 <p className="text-sm">
                   Increase vegetarian food options to 30% of total preparation.
