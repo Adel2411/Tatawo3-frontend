@@ -44,7 +44,7 @@ function LoginForm() {
 
         // On success
         form.reset();
-        router.push("/dashboard");
+        router.push("/volunteer/overview");
 
         setLoading(false);
       })(),
