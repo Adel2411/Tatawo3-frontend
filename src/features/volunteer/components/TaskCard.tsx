@@ -60,7 +60,7 @@ export function VolunteerTaskCard({ task }: VolunteerTaskCardProps) {
           {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
         </Badge>
         <Button variant="outline" size="sm" asChild>
-          <Link href={`/dashboard/volunteer/tasks/${task.id}`}>Details</Link>
+          <Link href={`/volunteer/tasks/${task.id}`}>Details</Link>
         </Button>
       </div>
     </Card>

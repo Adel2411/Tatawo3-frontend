@@ -66,9 +66,7 @@ export function NearbyOpportunitiesCard({
                     }
                   />
                   <Button size="sm" variant="outline" asChild>
-                    <Link
-                      href={`/dashboard/volunteer/nearby/${opportunity.id}`}
-                    >
+                    <Link href={`/volunteer/opportunities/${opportunity.id}`}>
                       Details
                     </Link>
                   </Button>
@@ -77,7 +75,7 @@ export function NearbyOpportunitiesCard({
             </div>
           ))}
           <Link
-            href="/dashboard/volunteer/nearby"
+            href="/volunteer/opportunities"
             className="block text-center text-sm text-primary hover:text-primary/90 transition-colors mt-2"
           >
             View more opportunities

@@ -108,7 +108,7 @@ export default function OrgOverview() {
                 <CardTitle>Upcoming Events</CardTitle>
                 <CardDescription>Your scheduled Iftar events</CardDescription>
               </div>
-              <Link href="/dashboard/restaurant/events/create">
+              <Link href="/organization/events/create">
                 <Button className="bg-primary hover:bg-primary/90">
                   <Plus className="mr-2 h-4 w-4" />
                   New Event
@@ -121,7 +121,7 @@ export default function OrgOverview() {
                   <OrgEventCard key={event.id} event={event} />
                 ))}
                 <Link
-                  href="/dashboard/restaurant/events"
+                  href="/organization/events"
                   className="block text-center text-sm text-primary hover:text-primary/80 transition-colors mt-2"
                 >
                   View all events
@@ -195,7 +195,7 @@ export default function OrgOverview() {
                   </div>
                 )}
                 <Link
-                  href="/dashboard/restaurant/volunteers"
+                  href="/organization/volunteers"
                   className="block text-center text-sm text-primary hover:text-primary/80 transition-colors mt-2"
                 >
                   Manage all volunteers

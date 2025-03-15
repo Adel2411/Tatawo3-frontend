@@ -177,12 +177,12 @@ describe("Authentication Routes", () => {
     it("should redirect to the protected page when visiting the login page with token in the cookies", () => {
       cy.setCookie("token", "abcd123456");
       cy.visit(`${baseUrl}/login`);
-      cy.url().should("include", "/dashboard");
+      cy.url().should("include", "/volunteer/overview");
     });
 
     it("should redirect to the home page when visiting the protected route without token in the cookies", () => {
       cy.clearCookie("token");
-      cy.visit(`${baseUrl}/dashboard`);
+      cy.visit(`${baseUrl}/volunteer/overview`);
       cy.url().should("include", "/home");
     });
   });

@@ -6,7 +6,7 @@ export default function OnboardingPage() {
   // Check if user is authenticated, redirect to login if not
 
   const handleSkip = () => {
-    redirect("/dashboard");
+    redirect("/volunteer/overview");
   };
 
   return (

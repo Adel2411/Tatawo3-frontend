@@ -32,7 +32,8 @@ export function Navbar() {
   ];
 
   // Check if user is on dashboard pages to show mode toggle
-  const isLoggedIn = pathname.includes("/dashboard");
+  const isLoggedIn =
+    pathname.includes("/volunteer") || pathname.includes("/organization");
 
   return (
     <header className="px-4 md:px-12 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

@@ -127,7 +127,7 @@ export default function VolunteerDashboard() {
                   Your scheduled volunteer activities
                 </CardDescription>
               </div>
-              <Link href="/dashboard/volunteer/tasks">
+              <Link href="/volunteer/tasks">
                 <Button variant="outline" size="sm">
                   View All
                 </Button>
@@ -193,7 +193,7 @@ export default function VolunteerDashboard() {
                 })}
               </div>
               <Link
-                href="/dashboard/volunteer/rewards"
+                href="/volunteer/rewards"
                 className="block text-center text-sm text-primary hover:text-primary/80 transition-colors mt-4"
               >
                 View all badges

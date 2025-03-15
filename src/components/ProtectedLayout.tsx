@@ -27,6 +27,8 @@ import {
 } from "lucide-react";
 import { ProtectedNav } from "./ProtectedNav";
 import Image from "next/image";
+import { showPromiseToast } from "@/lib/toastHandler";
+import { deleteToken } from "@/features/auth/api";
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -42,13 +44,21 @@ export default function ProtectedLayout({
 }: BaseLayoutProps) {
   const router = useRouter();
 
-  const handleLogout = () => {
-    router.push("/login");
+  const handleLogout = async () => {
+    showPromiseToast(
+      (async () => {
+        await deleteToken();
+
+        // On success
+        router.push("/");
+      })(),
+      "Logging out",
+    );
   };
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen">
+      <div className="w-full flex min-h-screen">
         <Sidebar className="border-r">
           <SidebarHeader className="flex flex-col gap-2 p-12">
             <div className="flex items-center justify-center">
@@ -85,15 +95,11 @@ export default function ProtectedLayout({
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem
-                    onClick={() => router.push("/dashboard/profile")}
-                  >
+                  <DropdownMenuItem onClick={() => router.push("/profile")}>
                     <User className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => router.push("/dashboard/settings")}
-                  >
+                  <DropdownMenuItem onClick={() => router.push("/settings")}>
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                   </DropdownMenuItem>

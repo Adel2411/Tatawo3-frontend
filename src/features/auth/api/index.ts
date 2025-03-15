@@ -16,10 +16,12 @@ import { cookies } from "next/headers";
 // Mock functions
 export const setToken = async () => {
   (await cookies()).set("token", "abcd1234");
+  (await cookies()).set("user-role", "volunteer");
 };
 
 export const deleteToken = async () => {
   (await cookies()).delete("token");
+  (await cookies()).delete("user-role");
 };
 
 // Real functions
