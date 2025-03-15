@@ -1,45 +1,49 @@
-# Next.js Template
+# Tatawo3 front-end
 
-Welcome to the **Next.js Template**, generated using **Next-Platter** – a CLI tool designed to quickly create and scaffold Next.js project templates with best practices and essential tools.
+<div style="text-align: center;">
+  <img src="public/Logo.svg" alt="Tatawo3 Logo" width="200">
+</div>
 
----
+> Connecting volunteers, organizations, and the community for meaningful Iftar experiences.
 
-## **Template Features**
+## ℹ️ Overview
 
-- **Modular Architecture:** Feature-folder structure for better modularity, maintainability, and scalability.
-- **Lightning Fast Performance:** Optimized with Next.js 15 and React 19.
-- **Enterprise-Grade Security:** Built-in authentication, authorization, and protected routes.
-- **Rich Ecosystem Integration:** Zod, React Hook Form, Zustand, React Query.
-- **Beautiful UI Components:** Shadcn/ui for modern, accessible design.
-- **Seamless Animations:** Framer Motion for smooth animations.
-- **End-to-End Testing:** Cypress integration for E2E testing.
-- **Containerization Ready:** Docker support for deployment.
-- **Theme Customization:** Next Themes for light/dark mode.
-- **Global Error & Success Handling:** Centralized user feedback.
-- **Global Loading State:** Managed with Zustand.
-- **API Handling Made Easy:** Pre-configured fetch instance.
-- **Authentication Flows:** Complete auth features.
-- **Cypress Test Coverage:** Extensive E2E tests.
-- **Template Presentation Pages:** Pre-built home and protected routes.
-- **Cookie Management:** Token-based auth.
-- **Server-Side Validation:** Zod with Next.js server actions.
-- **Client-Side Validation:** React Hook Form + Zod.
+Tatawo3 is a platform that bridges the gap between organizations hosting Iftar events, volunteers looking to contribute, and community members seeking places to enjoy Iftar. Our intuitive interface provides tailored experiences for each user type while making Iftar location discovery accessible to everyone.
 
----
+## ★ Core Concept
 
-## **Installed Libraries**
+Tatawo3 creates a comprehensive ecosystem for Iftar experiences:
 
-This template comes with the following libraries pre-installed:
+- **Open Iftar Discovery**: Anyone can find and access information about nearby Iftar events, no account required
+- **Dedicated Role-Based Dashboards**: Authenticated users access specialized interfaces based on their role (Volunteer or Organization)
+- **Community-Driven Engagement**: Fostering connections between organizations providing Iftar, volunteers contributing their time, and community members
 
-- **Zod** (validation)
-- **React Hook Form** (form management)
-- **Zustand** (state management)
-- **React Query** (async state management)
-- **Shadcn/ui** (UI components)
-- **Framer Motion** (animations)
-- **Cypress** (E2E testing)
-- **Docker** (containerization)
-- **Next Themes** (theme management)
+## ⚡ Key Features
+
+### 🔎 Iftar Discovery (For Everyone)
+
+- **Location-Based Search**: Find nearby Iftar events with an intuitive map interface
+- **Detailed Event Information**: Access menus, serving times, seating availability, and special accommodations
+- **Real-Time Updates**: Get current information about food service status and capacity
+- **Custom Filters**: Search for events based on dietary preferences and accessibility needs
+
+### 👤 Volunteer Experience
+
+Volunteers access a personalized dashboard with these dedicated tabs:
+
+- **Overview**: At-a-glance summary of upcoming tasks, impact metrics, and notifications
+- **Tasks**: Manage current and upcoming volunteer commitments
+- **Opportunities**: Discover new volunteer positions at Iftar events near you
+- **Rewards**: Track your earned reputation points, badges, and recognition for your service
+
+### 📊 Organization Portal
+
+Organizations benefit from powerful management tools through these specialized tabs:
+
+- **Overview**: Dashboard showing key metrics about events, volunteer participation, and guest attendance
+- **Events**: Create, edit and manage Iftar events with detailed scheduling and requirements
+- **Volunteers Management**: Coordinate volunteer assignments, track participation, and manage communication
+- **Analytics (AI-Powered)**: Gain insights into attendance patterns, resource utilization, and optimization suggestions
 
 ---
 
@@ -67,36 +71,37 @@ This structure is designed for flexibility and clarity. Add pages under `app/`, 
 
 ---
 
-## 🛠️ Configuration
+## 💡 Platform Benefits
 
-### Environment Variables
+- **Enhanced Community Connection**: Bringing together those who serve and those who gather
+- **Efficient Resource Management**: Helping organizations optimize volunteer deployment
+- **Recognition System**: Acknowledging and rewarding volunteer contributions
+- **Data-Driven Decisions**: Using AI insights to improve Iftar experiences
 
-1. Copy the `.env.example` file to `.env.local` in the root of your project:
+## ⚙️ Technical Implementation
 
-   ```bash
-   cp .env.example .env.local
-   ```
-
-2. Update the content of `.env.local` with your related environment variables:
-
-   ```plaintext
-   # URL for the public API
-   NEXT_PUBLIC_API_URL=http://localhost:8080
-
-   # Local development URL
-   LOCAL_URL=http://localhost:8080
-
-   # Host URL for the application
-   HOST_URL=http://localhost:8080
-   ```
-
-### Tailwind CSS
-
-Tailwind CSS is pre-configured in this template. You can customize it by editing the `tailwind.config.js` file.
+- Responsive design for all devices with lightning-fast performance
+- Real-time notifications and updates
+- Geolocation services for proximity-based features
+- Intuitive, accessible interface requiring minimal user inputs
 
 ---
 
-## Running the Project Locally
+## 🌐 Live Demo
+
+Experience Tatawo3 without installing anything:
+
+- **Live Site**: [https://tatawo3-frontend.vercel.app/home](https://tatawo3-frontend.vercel.app/home)
+- **Test Account**: `test@gmail.com` / password: `Test1234`
+
+After signing in with the provided credentials:
+
+- For volunteer features: Navigate to `/volunteer/overview`
+- For organization features: Navigate to `/organization/overview`
+
+---
+
+## ▶️ Running the Project Locally
 
 ### Run the development server:
 
@@ -136,7 +141,7 @@ npm run cypress:open
 
 ---
 
-## **Contact**
+## 📞 **Contact**
 
 - **GitHub**: [Adel2411](https://github.com/Adel2411)
 - **Email**: [hadjarabadel.2411@gmail.com](mailto:hadjarabadel.2411@gmail.com)
