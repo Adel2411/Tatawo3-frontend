@@ -27,10 +27,10 @@ export function Navbar() {
   // Navigation items array
   const navItems: NavItem[] = [
     { href: "/home", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/how-it-works", label: "How It Works" },
-    { href: "/contact", label: "Contact" },
     { href: "/iftar", label: "Iftar" },
+    { href: "#about", label: "About" },
+    { href: "#how-it-works", label: "How It Works" },
+    { href: "#contact", label: "Contact" },
   ];
 
   // Check if user is on dashboard pages to show mode toggle
@@ -39,7 +39,7 @@ export function Navbar() {
   return (
     <header className="px-4 md:px-12 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="h-16 flex items-center justify-between w-full">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-16">
           <Link href="/home" className="flex items-center p-2">
             <Image
               src="/Logo.svg"
