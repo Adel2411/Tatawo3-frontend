@@ -28,9 +28,7 @@ export function Navbar() {
   const navItems: NavItem[] = [
     { href: "/home", label: "Home" },
     { href: "/iftar", label: "Iftar" },
-    { href: "#about", label: "About" },
     { href: "#how-it-works", label: "How It Works" },
-    { href: "#contact", label: "Contact" },
   ];
 
   // Check if user is on dashboard pages to show mode toggle

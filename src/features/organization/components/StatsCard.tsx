@@ -1,16 +1,16 @@
 import type { ReactNode } from "react";
 
-interface VolunteerStatsCardProps {
+interface OrgStatsCardProps {
   title: string;
   value: number;
   icon: ReactNode;
 }
 
-export function VolunteerStatsCard({
+export default function OrgStatsCard({
   title,
   value,
   icon,
-}: VolunteerStatsCardProps) {
+}: OrgStatsCardProps) {
   return (
     <div className="flex items-center gap-4 rounded-lg border p-4 bg-card shadow-soft transition-all hover:shadow-medium">
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary">

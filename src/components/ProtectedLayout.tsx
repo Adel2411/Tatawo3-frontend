@@ -26,6 +26,7 @@ import {
   User,
 } from "lucide-react";
 import { ProtectedNav } from "./ProtectedNav";
+import Image from "next/image";
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -49,13 +50,11 @@ export default function ProtectedLayout({
     <SidebarProvider>
       <div className="flex min-h-screen">
         <Sidebar className="border-r">
-          <SidebarHeader className="flex flex-col gap-2 px-4 py-2">
-            <div className="flex items-center justify-between">
-              <span className="text-lg font-bold text-primary">
-                Iftar Connect
-              </span>
+          <SidebarHeader className="flex flex-col gap-2 p-12">
+            <div className="flex items-center justify-center">
+              <Image src="/Logo.svg" alt="Logo" width={80} height={80} />
               <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5 border-2" />
               </Button>
             </div>
           </SidebarHeader>
