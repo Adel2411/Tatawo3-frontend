@@ -2,7 +2,7 @@ export interface Message {
   id: string;
   senderId: string;
   senderName: string;
-  senderType: "volunteer" | "restaurant";
+  senderType: "volunteer" | "organization";
   recipientId: string;
   content: string;
   timestamp: Date;
@@ -14,7 +14,7 @@ export interface Conversation {
   participants: {
     id: string;
     name: string;
-    type: "volunteer" | "restaurant";
+    type: "volunteer" | "organization";
     avatar?: string;
   }[];
   lastMessage?: {

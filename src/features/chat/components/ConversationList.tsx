@@ -97,7 +97,7 @@ export function ConversationList({
           <Input
             type="search"
             placeholder="Search conversations..."
-            className="pl-8 transition-all focus:ring-2 focus:ring-emerald-500/50"
+            className="pl-8 transition-all"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

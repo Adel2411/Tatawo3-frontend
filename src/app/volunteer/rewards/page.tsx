@@ -148,7 +148,7 @@ export default function VolunteerRewardsPage() {
                       <div
                         className={`rounded-full p-3 ${
                           badge.earned
-                            ? "bg-emerald-100 text-emerald-600"
+                            ? "bg-primary/10 text-primary"
                             : "bg-muted text-muted-foreground"
                         }`}
                       >
@@ -163,7 +163,7 @@ export default function VolunteerRewardsPage() {
                       {badge.earned ? (
                         <Badge
                           variant="outline"
-                          className="mt-2 text-[10px] bg-emerald-50 text-emerald-700 border-emerald-200"
+                          className="mt-2 text-[10px] bg-primary/5 text-primary border-primary/20"
                         >
                           Earned
                         </Badge>
@@ -192,22 +192,18 @@ export default function VolunteerRewardsPage() {
                   <div
                     key={index}
                     className={`flex items-center gap-4 rounded-md border p-4 ${
-                      reward.earned
-                        ? "bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200"
-                        : ""
+                      reward.earned ? "bg-primary/20 border-primary/20" : ""
                     }`}
                   >
                     <div
                       className={`flex h-12 w-12 items-center justify-center rounded-full ${
-                        reward.earned
-                          ? "bg-emerald-100 dark:bg-emerald-800"
-                          : "bg-muted"
+                        reward.earned ? "bg-primary/10" : "bg-muted"
                       }`}
                     >
                       <Award
                         className={`h-6 w-6 ${
                           reward.earned
-                            ? "text-emerald-600 dark:text-emerald-400"
+                            ? "text-primary"
                             : "text-muted-foreground"
                         }`}
                       />
@@ -217,7 +213,7 @@ export default function VolunteerRewardsPage() {
                         <h3 className="font-medium">{reward.name}</h3>
                         <Badge
                           variant={reward.earned ? "default" : "outline"}
-                          className={reward.earned ? "bg-emerald-600" : ""}
+                          className={reward.earned ? "bg-primary" : ""}
                         >
                           {reward.earned ? "Earned" : `${reward.points} Points`}
                         </Badge>

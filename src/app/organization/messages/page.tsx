@@ -1,5 +1,8 @@
-function OrgMessages() {
-  return <div>OrgMessages</div>;
-}
+import { OrganizationChatLayout } from "@/features/chat/components/OrgChatLayout";
 
-export default OrgMessages;
+// Define this since it's missing from imports
+export type UserRole = "volunteer" | "organization";
+
+export default function MessagesPage() {
+  return <OrganizationChatLayout />;
+}

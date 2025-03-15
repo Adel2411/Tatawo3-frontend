@@ -43,7 +43,7 @@ export function RewardsCard({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-medium">Reputation Points</h3>
-            <span className="text-lg font-bold text-emerald-600">
+            <span className="text-lg font-bold text-primary">
               {reputationPoints}
             </span>
           </div>
@@ -56,10 +56,10 @@ export function RewardsCard({
           </div>
         </div>
 
-        <div className="rounded-lg border p-4 bg-emerald-50 dark:bg-emerald-900/20">
+        <div className="rounded-lg border p-4 bg-primary/5 dark:bg-primary/20">
           <div className="flex items-center gap-3">
-            <div className="rounded-full bg-emerald-100 dark:bg-emerald-800 p-2">
-              <Award className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+            <div className="rounded-full bg-primary/10 p-2">
+              <Award className="h-5 w-5 text-primary" />
             </div>
             <div>
               <h3 className="text-sm font-medium">Next Reward</h3>
@@ -84,15 +84,15 @@ export function RewardsCard({
                   key={index}
                   className="flex items-center gap-3 rounded-md border p-3"
                 >
-                  <div className="rounded-full bg-emerald-100 dark:bg-emerald-800 p-2">
-                    <Icon className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                  <div className="rounded-full bg-primary/10 border-2 text-primary p-2">
+                    <Icon className="h-4 w-4" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
                       <p className="text-sm font-medium">{badge.name}</p>
                       <Badge
                         variant="outline"
-                        className="bg-emerald-50 text-emerald-700 border-emerald-200"
+                        className="bg-primary/5 text-primary border-primary/20"
                       >
                         Earned
                       </Badge>
