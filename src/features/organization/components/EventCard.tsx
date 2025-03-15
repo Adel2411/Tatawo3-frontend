@@ -15,6 +15,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 export interface OrgEvent {
   id: number;
@@ -138,7 +139,11 @@ export default function OrgEventCard({ event }: OrgEventCardProps) {
 
           <div className="flex flex-col sm:flex-row gap-2 mt-4">
             <Button>Manage Event</Button>
-            <Button variant="outline">View Details</Button>
+            <Button variant="outline">
+              <Link href={`/organization/events/${event.id}`}>
+                View Details
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

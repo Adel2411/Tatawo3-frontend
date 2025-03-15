@@ -20,21 +20,22 @@ import {
   User,
   Users,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function VolunteersManagementPage() {
   // Mock data - would come from your backend
   const pendingVolunteers = [
     {
-      id: 1,
-      name: "Ahmed Khan",
-      email: "ahmed@example.com",
+      id: 3,
+      name: "Mohammed Rahman",
+      email: "mohammed@example.com",
       role: "Food Server",
       event: "Daily Iftar",
       date: "March 15, 2025",
-      status: "pending",
-      rating: null,
-      experience: "2 years",
-      availability: "Evenings and weekends",
+      status: "confirmed",
+      rating: 4.8,
+      experience: "3 years",
+      availability: "Evenings",
     },
     {
       id: 2,
@@ -52,16 +53,17 @@ export default function VolunteersManagementPage() {
 
   const confirmedVolunteers = [
     {
-      id: 3,
-      name: "Mohammed Rahman",
-      email: "mohammed@example.com",
+      id: 1,
+
+      name: "Ahmed Khan",
+      email: "ahmed@example.com",
       role: "Food Server",
       event: "Daily Iftar",
       date: "March 15, 2025",
-      status: "confirmed",
-      rating: 4.8,
-      experience: "3 years",
-      availability: "Evenings",
+      status: "pending",
+      rating: null,
+      experience: "2 years",
+      availability: "Evenings and weekends",
     },
     {
       id: 4,
@@ -339,8 +341,13 @@ export default function VolunteersManagementPage() {
                           <Button
                             size="sm"
                             className="bg-primary hover:bg-primary/90"
+                            asChild
                           >
-                            View Details
+                            <Link
+                              href={`/organization/volunteers/${volunteer.id}`}
+                            >
+                              View Details
+                            </Link>
                           </Button>
                           <Button size="sm" variant="outline">
                             Reassign Role
