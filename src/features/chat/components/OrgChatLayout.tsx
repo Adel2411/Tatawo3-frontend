@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import type { Conversation } from "@/features/chat/types";
 import { ConversationList } from "./ConversationList";
 import { EmptyChat } from "./EmptyChat";
@@ -86,24 +85,8 @@ export function OrganizationChatLayout() {
     useState<Conversation | null>(null);
   const [conversations, setConversations] =
     useState<Conversation[]>(mockOrgConversations);
-  const searchParams = useSearchParams();
   const userType = "organization";
   const userId = "o1";
-
-  // Check if there's a volunteer ID in the URL query params (for direct messaging)
-  useEffect(() => {
-    const volunteerId = searchParams?.get("volunteer");
-    if (volunteerId) {
-      // Find the conversation with this volunteer
-      const conversation = mockOrgConversations.find((conv) =>
-        conv.participants.some((p) => p.id === `v${volunteerId}`),
-      );
-
-      if (conversation) {
-        setSelectedConversation(conversation);
-      }
-    }
-  }, [searchParams]);
 
   const handleSelectConversation = (conversation: Conversation) => {
     if (conversation.unreadCount > 0) {
