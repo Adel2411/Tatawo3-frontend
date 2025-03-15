@@ -1,3 +1,4 @@
+import { use } from "react";
 import {
   Card,
   CardContent,
@@ -19,19 +20,16 @@ import {
 import Link from "next/link";
 import { VolunteerApplicationModal } from "@/features/volunteer/components/ApplicationModal";
 
-interface OpportunityDetailPageProps {
-  params: {
-    id: string;
-  };
-}
-
 export default function OpportunityDetailPage({
   params,
-}: OpportunityDetailPageProps) {
-  // In a real app, you would fetch the opportunity data based on the ID
-  // For now, we'll use mock data
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = use(params);
+  console.log(id);
+
   const opportunity = {
-    id: Number.parseInt(params.id),
+    id: 1,
     name: "Al-Noor Mosque",
     title: "Daily Iftar Volunteers Needed",
     address: "123 Main St, City",

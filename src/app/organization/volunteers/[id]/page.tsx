@@ -1,3 +1,4 @@
+import { use } from "react";
 import {
   Card,
   CardContent,
@@ -24,11 +25,13 @@ import { Progress } from "@/components/ui/progress";
 export default function VolunteerDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  // Mock data - would come from your backend
+  const { id } = use(params);
+  console.log(id);
+
   const volunteer = {
-    id: Number.parseInt(params.id),
+    id: 1,
     name: "Ahmed Khan",
     email: "ahmed.khan@example.com",
     phone: "+1 (555) 123-4567",

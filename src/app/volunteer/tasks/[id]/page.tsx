@@ -1,3 +1,4 @@
+import { use } from "react";
 import {
   Card,
   CardContent,
@@ -19,15 +20,16 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-interface TaskDetailPageProps {
-  params: {
-    id: string;
-  };
-}
+export default function TaskDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = use(params);
+  console.log(id);
 
-export default function TaskDetailPage({ params }: TaskDetailPageProps) {
   const task = {
-    id: Number.parseInt(params.id),
+    id: 1,
     title: "Food Preparation",
     location: "Al-Noor Mosque",
     address: "123 Main St, City",

@@ -1,3 +1,4 @@
+import { use } from "react";
 import {
   Card,
   CardContent,
@@ -25,11 +26,14 @@ import { Progress } from "@/components/ui/progress";
 export default function EventDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   // Mock data - would come from your backend
+  const { id } = use(params);
+  console.log(id);
+
   const event = {
-    id: Number.parseInt(params.id),
+    id: 1,
     title: "Daily Iftar",
     description:
       "Join us for our daily Iftar meal during Ramadan. We offer a variety of traditional dishes and welcome everyone in the community.",
