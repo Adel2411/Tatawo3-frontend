@@ -25,15 +25,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Card } from "@/components/ui/card";
 import { MessageBubble } from "./MessageBubble";
+import { Textarea } from "@/components/ui/textarea";
 
-// Mock messages for the selected conversation
+// Updated senderType to include "restaurant"
 const mockMessages: Record<string, Message[]> = {
   "1": [
     {
       id: "m1",
       senderId: "r1",
       senderName: "Al-Noor Mosque",
-      senderType: "restaurant",
+      senderType: "organization",
       recipientId: "v1",
       content:
         "Thank you for applying to volunteer with us for our Iftar event this Friday!",
@@ -54,7 +55,7 @@ const mockMessages: Record<string, Message[]> = {
       id: "m3",
       senderId: "r1",
       senderName: "Al-Noor Mosque",
-      senderType: "restaurant",
+      senderType: "organization", // Changed from "restaurant" to "organization"
       recipientId: "v1",
       content:
         "We'd like volunteers to arrive at 4:30 PM to help with setup. The event starts at 6:00 PM.",
@@ -67,7 +68,7 @@ const mockMessages: Record<string, Message[]> = {
       id: "m4",
       senderId: "r2",
       senderName: "Islamic Center",
-      senderType: "restaurant",
+      senderType: "organization", // Changed from "restaurant" to "organization"
       recipientId: "v1",
       content:
         "Hello John, we noticed you've volunteered with us before. Would you be available to help with food preparation this Friday?",
@@ -101,7 +102,7 @@ const mockMessages: Record<string, Message[]> = {
       id: "m7",
       senderId: "r3",
       senderName: "Community Center",
-      senderType: "restaurant",
+      senderType: "organization", // Changed from "restaurant" to "organization"
       recipientId: "v1",
       content:
         "Thank you for your interest! We'd love to have you. Your application has been approved!",
@@ -125,7 +126,7 @@ const mockMessages: Record<string, Message[]> = {
       id: "m9",
       senderId: "r1",
       senderName: "Al-Noor Mosque",
-      senderType: "restaurant",
+      senderType: "organization", // Changed from "restaurant" to "organization"
       recipientId: "v2",
       content:
         "Hi Sarah, thank you for your interest! We'd love to have you join us. What kind of tasks are you comfortable with?",
@@ -160,7 +161,7 @@ const mockMessages: Record<string, Message[]> = {
       id: "m12",
       senderId: "r1",
       senderName: "Al-Noor Mosque",
-      senderType: "restaurant",
+      senderType: "organization", // Changed from "restaurant" to "organization"
       recipientId: "v3",
       content:
         "Hi Ahmed, we'd be happy to have you! We need help with serving food from 6:30 PM to 8:30 PM this Friday.",
@@ -195,7 +196,7 @@ const mockMessages: Record<string, Message[]> = {
       id: "m15",
       senderId: "r1",
       senderName: "Al-Noor Mosque",
-      senderType: "restaurant",
+      senderType: "organization", // Changed from "restaurant" to "organization"
       recipientId: "v4",
       content:
         "Hi Fatima, thank you for reaching out! We'd love to have you help with food preparation. The shift is from 3:00 PM to 6:00 PM.",
@@ -217,14 +218,14 @@ const mockMessages: Record<string, Message[]> = {
 
 interface ChatWindowProps {
   conversation: Conversation;
-  onSendMessage: (content: string) => void;
-  userType: "volunteer" | "restaurant";
+  onSendMessageAction: (content: string) => void; // Renamed to indicate it's a Server Action
+  userType: "volunteer" | "organization"; // Changed from "restaurant" to "organization"
   userId: string;
 }
 
 export function ChatWindow({
   conversation,
-  onSendMessage,
+  onSendMessageAction,
   userType,
   userId,
 }: ChatWindowProps) {
@@ -267,7 +268,7 @@ export function ChatWindow({
     setMessages((prev) => [...prev, newMessage]);
 
     // Call the parent handler
-    onSendMessage(messageText);
+    onSendMessageAction(messageText);
 
     // Clear the input
     setMessageText("");
@@ -327,8 +328,8 @@ export function ChatWindow({
             <p
               className={`text-xs ${otherParticipant.type === "volunteer" ? "text-blue-500" : "text-primary"}`}
             >
-              {otherParticipant.type === "restaurant"
-                ? "Restaurant"
+              {otherParticipant.type === "organization"
+                ? "Organization"
                 : "Volunteer"}
             </p>
           </div>
@@ -373,74 +374,76 @@ export function ChatWindow({
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-muted/10 to-transparent">
-        {userType === "restaurant" && otherParticipant.type === "volunteer" && (
-          <Card className="p-3 bg-blue-500/5 dark:bg-blue-500/10 border-blue-500/20">
-            <div className="flex items-start gap-3">
-              <div className="bg-blue-500/10 dark:bg-blue-500/20 p-2 rounded-full">
-                <Calendar className="h-5 w-5 text-blue-500 dark:text-blue-400" />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-sm font-medium">Volunteer Application</h4>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {otherParticipant.name} has applied to volunteer at your Iftar
-                  event.
-                </p>
-                <div className="flex items-center gap-2 mt-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="h-7 px-2 text-xs"
-                  >
-                    <XCircle className="h-3.5 w-3.5 mr-1 text-destructive" />
-                    Decline
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="h-7 px-2 text-xs bg-primary hover:bg-primary/90"
-                  >
-                    <CheckCircle className="h-3.5 w-3.5 mr-1" />
-                    Approve
-                  </Button>
+        {userType === "organization" &&
+          otherParticipant.type === "volunteer" && (
+            <Card className="p-3 bg-blue-500/5 dark:bg-blue-500/10 border-blue-500/20">
+              <div className="flex items-start gap-3">
+                <div className="bg-blue-500/10 dark:bg-blue-500/20 p-2 rounded-full">
+                  <Calendar className="h-5 w-5 text-blue-500 dark:text-blue-400" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-medium">Volunteer Application</h4>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {otherParticipant.name} has applied to volunteer at your
+                    Iftar event.
+                  </p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="h-7 px-2 text-xs"
+                    >
+                      <XCircle className="h-3.5 w-3.5 mr-1 text-destructive" />
+                      Decline
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="h-7 px-2 text-xs bg-primary hover:bg-primary/90"
+                    >
+                      <CheckCircle className="h-3.5 w-3.5 mr-1" />
+                      Approve
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Card>
-        )}
+            </Card>
+          )}
 
-        {userType === "volunteer" && otherParticipant.type === "restaurant" && (
-          <Card className="p-3 bg-primary/5 dark:bg-primary/20 dark:bg-primary/10 border-primary/20">
-            <div className="flex items-start gap-3">
-              <div className="bg-primary/10 dark:bg-primary/20 p-2 rounded-full">
-                <MapPin className="h-5 w-5 text-primary dark:text-primary/90" />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-sm font-medium">Volunteer Opportunity</h4>
-                <div className="text-xs text-muted-foreground mt-1 space-y-1">
-                  <div className="flex items-center">
-                    <Calendar className="h-3.5 w-3.5 mr-1 text-primary" />
-                    <span>Friday, March 15, 2025</span>
+        {userType === "volunteer" &&
+          otherParticipant.type === "organization" && (
+            <Card className="p-3 bg-primary/5 dark:bg-primary/10 border-primary/20">
+              <div className="flex items-start gap-3">
+                <div className="bg-primary/10 dark:bg-primary/20 p-2 rounded-full">
+                  <MapPin className="h-5 w-5 text-primary dark:text-primary/90" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-medium">Volunteer Opportunity</h4>
+                  <div className="text-xs text-muted-foreground mt-1 space-y-1">
+                    <div className="flex items-center">
+                      <Calendar className="h-3.5 w-3.5 mr-1 text-primary" />
+                      <span>Friday, March 15, 2025</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="h-3.5 w-3.5 mr-1 text-primary" />
+                      <span>4:30 PM - 9:00 PM</span>
+                    </div>
+                    <div className="flex items-center">
+                      <MapPin className="h-3.5 w-3.5 mr-1 text-primary" />
+                      <span>{otherParticipant.name}, 123 Main St</span>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <Clock className="h-3.5 w-3.5 mr-1 text-primary" />
-                    <span>4:30 PM - 9:00 PM</span>
-                  </div>
-                  <div className="flex items-center">
-                    <MapPin className="h-3.5 w-3.5 mr-1 text-primary" />
-                    <span>{otherParticipant.name}, 123 Main St</span>
+                  <div className="flex items-center gap-2 mt-2">
+                    <Button
+                      size="sm"
+                      className="h-7 px-2 text-xs bg-primary hover:bg-primary/90"
+                    >
+                      View Details
+                    </Button>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <Button
-                    size="sm"
-                    className="h-7 px-2 text-xs bg-primary hover:bg-primary/90"
-                  >
-                    View Details
-                  </Button>
-                </div>
               </div>
-            </div>
-          </Card>
-        )}
+            </Card>
+          )}
 
         {messages.map((message) => (
           <MessageBubble
@@ -478,8 +481,8 @@ export function ChatWindow({
             <span className="text-lg font-semibold">⚡</span>
             <span className="sr-only">Quick responses</span>
           </Button>
-          <textarea
-            className="flex-1 min-h-[80px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+          <Textarea
+            className="flex-1 min-h-[80px] text-sm disabled:cursor-not-allowed disabled:opacity-50 resize-none"
             placeholder="Type your message..."
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}

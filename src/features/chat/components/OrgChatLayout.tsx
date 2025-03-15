@@ -87,7 +87,7 @@ export function OrganizationChatLayout() {
   const [conversations, setConversations] =
     useState<Conversation[]>(mockOrgConversations);
   const searchParams = useSearchParams();
-  const userType = "restaurant";
+  const userType = "organization";
   const userId = "o1";
 
   // Check if there's a volunteer ID in the URL query params (for direct messaging)
@@ -148,7 +148,7 @@ export function OrganizationChatLayout() {
         <ConversationList
           conversations={conversations}
           selectedId={selectedConversation?.id}
-          onSelectConversation={handleSelectConversation}
+          onSelectConversationAction={handleSelectConversation}
           userType={userType}
           userId={userId}
         />
@@ -157,7 +157,7 @@ export function OrganizationChatLayout() {
         {selectedConversation ? (
           <ChatWindow
             conversation={selectedConversation}
-            onSendMessage={handleSendMessage}
+            onSendMessageAction={handleSendMessage}
             userType={userType}
             userId={userId}
           />

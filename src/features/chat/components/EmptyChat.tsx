@@ -1,7 +1,7 @@
 import { MessageSquare } from "lucide-react";
 
 interface EmptyChatProps {
-  userType: "volunteer" | "restaurant";
+  userType: "volunteer" | "organization";
 }
 
 export function EmptyChat({ userType }: EmptyChatProps) {

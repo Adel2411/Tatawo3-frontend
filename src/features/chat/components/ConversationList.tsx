@@ -49,15 +49,15 @@ function formatRelativeTime(date: Date): string {
 interface ConversationListProps {
   conversations: Conversation[];
   selectedId?: string;
-  onSelectConversation: (conversation: Conversation) => void;
-  userType: "volunteer" | "restaurant";
+  onSelectConversationAction: (conversation: Conversation) => void; // Renamed to follow Server Action convention
+  userType: "volunteer" | "organization";
   userId: string;
 }
 
 export function ConversationList({
   conversations,
   selectedId,
-  onSelectConversation,
+  onSelectConversationAction, // Renamed prop
   userType,
   userId,
 }: ConversationListProps) {
@@ -81,7 +81,7 @@ export function ConversationList({
       <div className="p-4 border-b">
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-lg font-semibold">Messages</h2>
-          {userType === "restaurant" && (
+          {userType === "organization" && (
             <Button
               variant="ghost"
               size="sm"
@@ -121,7 +121,7 @@ export function ConversationList({
                     ? "bg-primary/5 dark:bg-primary/10"
                     : ""
                 } ${conversation.unreadCount > 0 ? "font-medium" : ""}`}
-                onClick={() => onSelectConversation(conversation)}
+                onClick={() => onSelectConversationAction(conversation)} // Updated function call
               >
                 <Avatar>
                   <AvatarImage

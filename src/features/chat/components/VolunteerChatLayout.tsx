@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import type { Conversation } from "@/features/chat/types";
 import { ConversationList } from "./ConversationList";
 import { EmptyChat } from "./EmptyChat";
@@ -135,7 +134,7 @@ export function VolunteerChatLayout() {
         <ConversationList
           conversations={conversations}
           selectedId={selectedConversation?.id}
-          onSelectConversation={handleSelectConversation}
+          onSelectConversationAction={handleSelectConversation}
           userType={userType}
           userId={userId}
         />
@@ -144,7 +143,7 @@ export function VolunteerChatLayout() {
         {selectedConversation ? (
           <ChatWindow
             conversation={selectedConversation}
-            onSendMessage={handleSendMessage}
+            onSendMessageAction={handleSendMessage}
             userType={userType}
             userId={userId}
           />
