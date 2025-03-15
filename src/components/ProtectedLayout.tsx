@@ -17,14 +17,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Bell,
-  LogOut,
-  Menu,
-  MessageSquare,
-  Settings,
-  User,
-} from "lucide-react";
+import { Bell, LogOut, MessageSquare, Settings, User } from "lucide-react";
 import { ProtectedNav } from "./ProtectedNav";
 import Image from "next/image";
 import { showPromiseToast } from "@/lib/toastHandler";
@@ -36,7 +29,6 @@ interface BaseLayoutProps {
   mode: "volunteer" | "organization";
 }
 
-// Base layout component that will be used by both specialized layouts
 export default function ProtectedLayout({
   children,
   title,
@@ -60,12 +52,9 @@ export default function ProtectedLayout({
     <SidebarProvider>
       <div className="w-full flex min-h-screen">
         <Sidebar className="border-r">
-          <SidebarHeader className="flex flex-col gap-2 p-12">
+          <SidebarHeader className="flex flex-col gap-2 p-10 mb-8">
             <div className="flex items-center justify-center">
-              <Image src="/Logo.svg" alt="Logo" width={80} height={80} />
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5 border-2" />
-              </Button>
+              <Image src="/Logo.svg" alt="Logo" width={100} height={100} />
             </div>
           </SidebarHeader>
           <SidebarContent className="px-4 py-2">
@@ -115,7 +104,7 @@ export default function ProtectedLayout({
         <div className="flex-1">
           <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-6">
             <div className="flex flex-1 items-center gap-2">
-              <h1 className="text-lg font-semibold">{title}</h1>
+              <h1 className="text-2xl font-semibold">{title}</h1>
             </div>
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="icon" className="relative">

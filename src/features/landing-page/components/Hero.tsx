@@ -18,8 +18,8 @@ function Hero() {
                   Connecting Communities for Ramadan
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Join Iftar Connect to volunteer, find free meals, or host
-                  events during the holy month.
+                  Join Tatawo3 to volunteer, find free meals, or host events
+                  during the holy month.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">

@@ -47,7 +47,7 @@ export function VolunteerApplicationModal({
     setOpen(false);
 
     // Redirect to messages page with success notification
-    router.push("/dashboard/messages");
+    router.push("/volunteer/messages");
   };
 
   return (
