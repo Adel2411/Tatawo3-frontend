@@ -38,7 +38,7 @@ export function CreateEventModal({ trigger }: CreateEventModalProps) {
     setOpen(false);
 
     // Redirect to events page
-    router.push("/dashboard/restaurant/events");
+    router.push("organization/events");
   };
 
   const nextStep = () => {

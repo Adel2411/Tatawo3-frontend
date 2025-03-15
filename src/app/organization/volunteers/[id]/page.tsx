@@ -108,7 +108,7 @@ export default function VolunteerDetailsPage({
           <p className="text-muted-foreground">Volunteer profile and history</p>
         </div>
         <div className="flex items-center gap-2">
-          <Link href={`/dashboard/messages/new?volunteer=${volunteer.id}`}>
+          <Link href={`/organization/messages`}>
             <Button className="bg-primary hover:bg-primary/90">
               <MessageSquare className="mr-2 h-4 w-4" />
               Message Volunteer
@@ -391,7 +391,7 @@ export default function VolunteerDetailsPage({
               <CardDescription>Manage this volunteer</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Link href={`/dashboard/messages/new?volunteer=${volunteer.id}`}>
+              <Link href={`/organization/messages`}>
                 <Button className="w-full bg-primary hover:bg-primary/90">
                   <MessageSquare className="mr-2 h-4 w-4" />
                   Send Message

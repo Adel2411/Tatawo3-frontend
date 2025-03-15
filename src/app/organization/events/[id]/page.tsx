@@ -298,7 +298,7 @@ export default function EventDetailsPage({
                         </Avatar>
                         <div>
                           <Link
-                            href={`/dashboard/restaurant/volunteers/${volunteer.id}`}
+                            href={`/organization/volunteers/${volunteer.id}`}
                             className="font-medium hover:underline"
                           >
                             {volunteer.name}
@@ -316,9 +316,7 @@ export default function EventDetailsPage({
                           {volunteer.status.charAt(0).toUpperCase() +
                             volunteer.status.slice(1)}
                         </Badge>
-                        <Link
-                          href={`/dashboard/messages/new?volunteer=${volunteer.id}`}
-                        >
+                        <Link href={`/organization/messages`}>
                           <Button variant="ghost" size="icon">
                             <MessageSquare className="h-4 w-4" />
                           </Button>
